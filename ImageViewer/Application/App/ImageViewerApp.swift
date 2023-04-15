@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ImageViewerApp: App {
     var body: some Scene {
-        Window("ImageViewer", id: "main") {
+        Window(Constants.windowName, id: Constants.windowID) {
             ContentView()
                 .onAppear {
                     NSWindow.allowsAutomaticWindowTabbing = true
@@ -21,5 +21,12 @@ struct ImageViewerApp: App {
             CommandGroup(replacing: .undoRedo) { }
             CommandGroup(replacing: .pasteboard) { }
         }
+    }
+}
+
+extension ImageViewerApp {
+    private struct Constants {
+        static let windowName = "ImageViewer"
+        static let windowID = "main"
     }
 }
