@@ -10,8 +10,16 @@ import SwiftUI
 @main
 struct ImageViewerApp: App {
     var body: some Scene {
-        WindowGroup {
+        Window("ImageViewer", id: "main") {
             ContentView()
+                .onAppear {
+                    NSWindow.allowsAutomaticWindowTabbing = true
+                }
+        }
+        .commands {
+            CommandGroup(replacing: .newItem) { }
+            CommandGroup(replacing: .undoRedo) { }
+            CommandGroup(replacing: .pasteboard) { }
         }
     }
 }
